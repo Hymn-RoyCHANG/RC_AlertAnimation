@@ -1,23 +1,25 @@
 # RC_AlertAnimation
 AlertController animation / 弹框动画 
-# alert animation / 弹框动画
-提供一个弹框的动画，对于动画的设置需要自行自定义控制器，然后实现代理：RC_AlertAnimationDelegate
+# Sample Demo / 示例
+这里是提供一个弹框动画，对于控制器的内容根据需求自行定义的，然后实现代理：RC_AlertAnimationDelegate 即可。
+
+## Define AlertController / 定义AlertController
+define the AlertController and implement the delegate / 定义AlertController并实现代理
 ```objc
-/// #1. declare AlertController / 定义AlertController
 @interface MyAlertController : UIViewController <RC_AlertAnimationDelegate>
 ....
 @end
 
 @implementation MyAlertController
 
-/// #2. init your subviews / 初始化子视图
+/// init your subviews / 初始化子视图
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     .... your subviews ....
 }
 
-/// #3. implement delegate / 实现代理方法
+/// implement delegate / 实现代理方法
 #pragma mark - RC_AlertAnimationDelegate
 
 - (void)rc_presentAnimation:(RC_AlertAnimation *)animation completionHandler:(void (^)(BOOL finished))completionHandler{
@@ -63,8 +65,10 @@ AlertController animation / 弹框动画
 }
 
 @end
+```
 
-/// #4. present / 弹框
+## Usage / 调用
+```objc
 MyAlertController *alert = [[MyAlertController alloc] init];
 [somevc presentAlertController:alert];
 ```
